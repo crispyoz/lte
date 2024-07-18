@@ -1,0 +1,65 @@
+diff --git a/ltepatch b/ltepatch
+new file mode 100644
+index 0000000000..e69de29bb2
+diff --git a/target/linux/ramips/dts/mt7628an_onion_omega2lte.dts b/target/linux/ramips/dts/mt7628an_onion_omega2lte.dts
+new file mode 100644
+index 0000000000..1e832b6ece
+--- /dev/null
++++ b/target/linux/ramips/dts/mt7628an_onion_omega2lte.dts
+@@ -0,0 +1,36 @@
++// SPDX-License-Identifier: GPL-2.0-or-later OR MIT
++/dts-v1/;
++
++#include "mt7628an_onion_omega2.dtsi"
++
++/ {
++	compatible = "onion,omega2lte", "mediatek,mt7628an-soc";
++	model = "Onion Omega2 LTE";
++
++	leds {
++		compatible = "gpio-leds";
++
++		wifi {
++		    label = "omega2lte:blue:wifi";
++			gpios = <&gpio 12 GPIO_ACTIVE_LOW>;
++			linux,default-trigger = "phy0tpt";
++		};
++		system {
++			label = "omega2lte:orange:system";
++			gpios = <&gpio 11 GPIO_ACTIVE_LOW>;
++		};		
++	};
++};
++
++&flash0 {
++	broken-flash-reset;
++};
++
++&firmware {
++	reg = <0x50000 0x1fb0000>;
++};
++
++
++
++	
++
+diff --git a/target/linux/ramips/image/mt76x8.mk b/target/linux/ramips/image/mt76x8.mk
+index 22ec774dc7..7df1e8984a 100644
+--- a/target/linux/ramips/image/mt76x8.mk
++++ b/target/linux/ramips/image/mt76x8.mk
+@@ -513,6 +513,15 @@ define Device/onion_omega2pro
+ endef
+ TARGET_DEVICES += onion_omega2pro
+ 
++define Device/onion_omega2lte
++  IMAGE_SIZE := 32448k
++  DEVICE_VENDOR := Onion
++  DEVICE_MODEL := Omega2lte
++  DEVICE_PACKAGES:= kmod-usb2 kmod-usb-ohci uboot-envtools kmod-sdhci-mt7620 omega2-lte-base
++  SUPPORTED_DEVICES += omega2lte
++endef
++TARGET_DEVICES += onion_omega2lte
++
+ define Device/oraybox_x1
+   IMAGE_SIZE := 15360k
+   DEVICE_VENDOR := OrayBox
