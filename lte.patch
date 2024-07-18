@@ -63,3 +63,25 @@ index 22ec774dc7..7df1e8984a 100644
  define Device/oraybox_x1
    IMAGE_SIZE := 15360k
    DEVICE_VENDOR := OrayBox
+diff --git a/target/linux/ramips/mt76x8/base-files/etc/board.d/02_network b/target/linux/ramips/mt76x8/base-files/etc/board.d/02_network
+index c44361a439..d2650d7774 100644
+--- a/target/linux/ramips/mt76x8/base-files/etc/board.d/02_network
++++ b/target/linux/ramips/mt76x8/base-files/etc/board.d/02_network
+@@ -21,6 +21,8 @@ ramips_setup_interfaces()
+ 	minew,g1-c|\
+ 	onion,omega2p|\
+ 	onion,omega2|\
++	onion,omega2pro|\
++	onion,omega2lte|\
+ 	ravpower,rp-wd009|\
+ 	tama,w06|\
+ 	tplink,re200-v2|\
+@@ -287,6 +289,8 @@ ramips_setup_macs()
+ 		;;
+ 	onion,omega2|\
+ 	onion,omega2p|\
++	onion,omega2pro|\
++	onion,omega2lte|\
+ 	vocore,vocore2|\
+ 	vocore,vocore2-lite|\
+ 	wavlink,wl-wn576a2)
